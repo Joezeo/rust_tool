@@ -4,5 +4,6 @@ mod ui;
 mod excel_util;
 
 fn main() {
-    UI::start();
+    let mut files = Box::new(vec![]);
+    UI::start(&mut files);
 }
