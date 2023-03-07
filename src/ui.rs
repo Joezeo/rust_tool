@@ -128,3 +128,7 @@ extern "system" fn wndproc(window: HWND, message: u32, wparam: WPARAM, lparam: L
         }
     }
 }
+
+fn _file_directory() {
+
+}
