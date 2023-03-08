@@ -27,7 +27,6 @@ use windows::{
         },
     },
 };
-
 use crate::excel_util;
 
 pub static mut RUNNING: AtomicBool = AtomicBool::new(true);
@@ -135,6 +134,9 @@ extern "system" fn wndproc(window: HWND, message: u32, wparam: WPARAM, lparam: L
                     150 => {
                         let files = FILES.load(Ordering::SeqCst).as_mut().unwrap();
                         for file in files.iter() {
+                            if !file.ends_with(".xlsx") {
+                                continue;
+                            }
                             excel_util::read_and_compare_rows(file);
                         }
                     }
